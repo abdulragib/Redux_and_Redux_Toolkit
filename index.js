@@ -37,25 +37,23 @@ function reducer(state={amount:5}, action){
 //     console.log(history)
 // })
 
-//Async API Call
-async function getUser(){
-    const {data} = await axios.get('http://localhost:3000/account/1')
-    console.log(data)
-}
-
-getUser()
-
 //Action creators
 function incrementValue(){
     return {type:increment}
 }
 
-async function initUser(dispatch,getState){
+
+//thunk middleware 
+async function getUser(dispatch,getState){
     const {data} = await axios.get('http://localhost:3000/account/1')
-    dispatch({type:init,payload:data.amount})
+    dispatch(initUser(data.amount))
+}
+
+function initUser(value){
+    return {type:init,payload:value}
 }
 
 setTimeout(()=>{
-   store.dispatch(initUser)
+   store.dispatch(getUser)
 },3000)
 
