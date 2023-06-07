@@ -1,6 +1,7 @@
-import {createStore} from 'redux';
+import {createStore,applyMiddleware} from 'redux';
+import logger from 'redux-logger';
 
-const store=createStore(reducer);
+const store=createStore(reducer,applyMiddleware(logger.default));
 const history=[]
 
 function reducer(state={amount:1},action){
@@ -21,5 +22,5 @@ store.subscribe(()=>{
 
 setInterval(()=>{
    store.dispatch({type:"increment"})
-},2000)
+},5000)
 
