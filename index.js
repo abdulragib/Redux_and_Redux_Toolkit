@@ -3,20 +3,24 @@ import logger from 'redux-logger';
 
 const store=createStore(reducer,applyMiddleware(logger.default));
 const history=[]
+//action name constant
+const increment="increment";
+const decrement="decrement";
+const incrementByAmount="incrementByAmount";
 
 function reducer(state={amount:5},action){
     
-   if(action.type==='increment')
+   if(action.type===increment)
    {
         return {amount:state.amount+1};
    }
 
-   if(action.type==='decrement')
+   if(action.type===decrement)
    {
         return {amount:state.amount-1};
    }
 
-   if(action.type==='incrementByAmount')
+   if(action.type===incrementByAmount)
    {
        return {amount : state.amount + action.payload}
    }
