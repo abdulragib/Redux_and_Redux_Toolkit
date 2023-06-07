@@ -20,3 +20,5 @@
  Installing Command -  npm i -g json-server 
  json-server db.json to run json server with file
  db.json is json file name
+
+always keep in mind we can only dispatch object to reducer not promises.
