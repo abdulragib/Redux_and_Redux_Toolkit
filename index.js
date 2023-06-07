@@ -36,7 +36,7 @@ store.subscribe(()=>{
 
 //Action creators
 function increment(){
-    return {type:"increment"}
+    return {type:increment}
 }
 
 setInterval(()=>{
