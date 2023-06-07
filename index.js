@@ -29,7 +29,13 @@ store.subscribe(()=>{
     console.log(history)
 })
 
+
+//Action creators
+function increment(){
+    return {type:"increment"}
+}
+
 setInterval(()=>{
-   store.dispatch({type:"incrementByAmount",payload:4})
-},5000)
+   store.dispatch(increment())
+},3000)
 
