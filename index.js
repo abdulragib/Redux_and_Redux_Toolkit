@@ -7,8 +7,7 @@ function reducer(state={amount:1},action){
     
    if(action.type==='increment')
    {
-         state.amount=state.amount+1;
-         return state;
+        return {amount:state.amount+1};
    }
    else{
       return state;
