@@ -17,4 +17,6 @@
  middleware is in between the dispatch and reducer.
  if we want to perform certain kind of operation(like calling Apis) in between dispatching action to reducer then we use middleware.
 
- 
+ Installing Command -  npm i -g json-server 
+ json-server db.json to run json server with file
+ db.json is json file name
