@@ -1,14 +1,15 @@
 import {createStore,applyMiddleware} from 'redux';
 import logger from 'redux-logger';
 
-const store=createStore(reducer,applyMiddleware(logger.default));
-const history=[]
 //action name constant
 const increment="increment";
 const decrement="decrement";
 const incrementByAmount="incrementByAmount";
 
-function reducer(state={amount:5},action){
+const store=createStore(reducer,applyMiddleware(logger.default));
+const history=[];
+
+function reducer(state={amount:5}, action){
     
    if(action.type===increment)
    {
@@ -35,11 +36,11 @@ store.subscribe(()=>{
 
 
 //Action creators
-function increment(){
+function incrementValue(){
     return {type:increment}
 }
 
 setInterval(()=>{
-   store.dispatch(increment())
+   store.dispatch(incrementValue())
 },3000)
 
