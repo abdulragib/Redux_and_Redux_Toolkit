@@ -4,10 +4,11 @@ import axios from "axios";
 import thunk from "redux-thunk";
 
 //action name constant
-const init = "init";
-const increment = "increment";
-const decrement = "decrement";
-const incrementByAmount = "incrementByAmount";
+const init = "account/init";
+const increment = "account/increment";
+const decrement = "account/decrement";
+const incrementByAmount = "account/incrementByAmount";
+const incrementBonus="bonus/increment"
 
 const store = createStore(
   combineReducers({
@@ -16,6 +17,7 @@ const store = createStore(
 }),
   applyMiddleware(logger.default, thunk.default)
 );
+
 const history = [];
 
 function accountReducer(state = { amount: 5 }, action) {
@@ -37,21 +39,43 @@ function accountReducer(state = { amount: 5 }, action) {
   }
 }
 
+
 function bonusReducer(state={points:0},action)
 {
     switch(action.type)
     {
-        case increment:
+        case incrementBonus:
             return {points:state.points+1};
+
+        case incrementByAmount:
+            if(action.payload>=100)
+            {
+                return {points:state.points+1};
+            }
 
         default:
             return state;
     }
 }
 
+//Action Creator
 function incrementValue()
 {
     return {type:increment};
+}
+
+function decrementValue()
+{
+    return {type:decrement}
+}
+
+function incrementByAmountValue(value)
+{
+    return {type:incrementByAmount,payload:value};
+}
+
+function incrementBonusValue(value){
+    return{type:incrementBonus, payload:value};
 }
 
 //thunk middleware
@@ -68,5 +92,7 @@ function initUser(value) {
 }
 
 setTimeout(() => {
-  store.dispatch(incrementValue());
+    //store.dispatch(getUser(1));
+//   store.dispatch(incrementByAmountValue(100));
+    store.dispatch(incrementBonusValue(5))
 }, 3000);
