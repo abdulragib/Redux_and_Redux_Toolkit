@@ -49,6 +49,11 @@ function bonusReducer(state={points:0},action)
     }
 }
 
+function incrementValue()
+{
+    return {type:increment};
+}
+
 //thunk middleware
  function getUser(id) {
   return async (dispatch, getState) => {
@@ -63,5 +68,5 @@ function initUser(value) {
 }
 
 setTimeout(() => {
-  store.dispatch(getUser(1));
+  store.dispatch(incrementValue());
 }, 3000);
